@@ -1,3 +1,6 @@
+import { CreatedOn } from "../Decorators/CreatedOn";
+import { ModifiedOn, updateModifiedOn } from "../Decorators/ModifiedOn";
+
 export interface IUser {
   firstName: string;
   middleName: string;
@@ -6,11 +9,12 @@ export interface IUser {
   phone: string;
   role: number;
   address: string;
-  createdOn: Date;
-  editedOn: Date;
 }
 
+@CreatedOn
+@ModifiedOn
 class User {
+  @updateModifiedOn
   public firstName;
   public middleName;
   public lastName;
@@ -18,20 +22,9 @@ class User {
   public phone;
   public role;
   public address;
-  public createdOn;
-  public editedOn;
   constructor(obj: IUser) {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      email,
-      phone,
-      role,
-      address,
-      createdOn,
-      editedOn,
-    } = obj;
+    const { firstName, middleName, lastName, email, phone, role, address } =
+      obj;
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -39,8 +32,6 @@ class User {
     this.phone = phone;
     this.role = role;
     this.address = address;
-    this.createdOn = createdOn;
-    this.editedOn = editedOn;
   }
 }
 
