@@ -1,6 +1,5 @@
 import { Button, CircularProgress } from '@mui/material';
-import { flexbox } from '@mui/system';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Table from '../Components/Table'
 import User from '../utils/DataSource/User';
 import { Role } from '../utils/Role';
@@ -22,8 +21,8 @@ const columns = [
       }, lookupObject),
     },
     { title: 'Address', field: 'address' },
-    { title: 'Created On', field: 'createdOn', type: 'date' },
-    { title: 'Edited On', field: 'editedOn', type: 'date'  },
+    { title: 'Created On', field: 'createdOn', type: 'datetime' },
+    { title: 'Edited On', field: 'modifiedOn', type: 'datetime'  },
   ]
   const userData = [
     new User({ 
@@ -34,8 +33,6 @@ const columns = [
         phone: '8653356936',
         role: Role.SuperAdmin,
         address: 'west bengal',
-        createdOn: new Date(),
-        editedOn: new Date(),
     }),
     new User({ 
         firstName: 'Bishop',
@@ -45,8 +42,6 @@ const columns = [
         phone: '7001057552',
         role: Role.Admin,
         address: 'west bengal',
-        createdOn: new Date(),
-        editedOn: new Date(),
     }),
     new User({ 
         firstName: 'ABC',
@@ -56,8 +51,6 @@ const columns = [
         phone: '7001057552',
         role: Role.Subscriber,
         address: 'East bengal',
-        createdOn: new Date(),
-        editedOn: new Date(),
     }),
   ]
 const UserList = () => {
@@ -70,6 +63,7 @@ const UserList = () => {
             setLoading(false)
         }, 2000)
     }
+    console.log('data ', data)
   return (
     <div>
         <h1>User List</h1>
