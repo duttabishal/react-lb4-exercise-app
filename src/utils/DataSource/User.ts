@@ -2,6 +2,7 @@ import { CreatedOn } from "../Decorators/CreatedOn";
 import { ModifiedOn, updateModifiedOn } from "../Decorators/ModifiedOn";
 
 export interface IUser {
+  id: number;
   firstName: string;
   middleName: string;
   lastName: string;
